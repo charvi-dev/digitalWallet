@@ -1,0 +1,40 @@
+[
+  {
+    "username": "Charvi",
+    "pin": "3107",
+    "account_balance": 9980,
+    "balance": null
+  },
+  {
+    "username": "Saloni",
+    "pin": "3108",
+    "account_balance": 20000
+  },
+  {
+    "username": "Sandeep",
+    "pin": "3109",
+    "account_balance": 30000
+  },
+  {
+    "username": "Ram",
+    "pin": "3101",
+    "account_balance": 40000,
+    "messages": [
+      {
+        "sender": "Charvi",
+        "content": "Hi",
+        "timestamp": "2024-01-28T15:10:18.233Z"
+      },
+      {
+        "sender": "Charvi",
+        "content": "Cute",
+        "timestamp": "2024-01-29T05:11:16.302Z"
+      }
+    ]
+  },
+  {
+    "username": "Ashwat",
+    "pin": "3107",
+    "account_balance": 50050
+  }
+]

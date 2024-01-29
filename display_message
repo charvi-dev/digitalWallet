@@ -1,0 +1,50 @@
+const fs = require('fs');
+const readline = require('readline');
+
+const r1 = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function displayMessages() {
+    r1.question("Enter your username to check messages: ", (username) => {
+        // Read the JSON file
+        fs.readFile('data1.json', 'utf8', (err, data) => {
+            if (err) {
+                console.error(`Error reading data1.json file: ${err.message}`);
+                return;
+            }
+
+            try {
+                const users = JSON.parse(data);
+
+                // Check if the entered username exists
+                const user = users.find(u => u.username === username);
+
+                if (user) {
+                    // Check if the user has received any messages
+                    if (user.messages && user.messages.length > 0) {
+                        console.log(`Messages for ${username}:`);
+                        user.messages.forEach(message => {
+                            console.log(`From: ${message.sender}`);
+                            console.log(`Content: ${message.content}`);
+                            console.log(`Timestamp: ${message.timestamp}`);
+                            console.log('-----------------------'); // Line break
+                        });
+                    } else {
+                        console.log(`No messages for ${username}.`);
+                    }
+                    r1.close();
+                } else {
+                    console.log("Invalid username. Please try again.");
+                    displayMessages();
+                }
+            } catch (parseError) {
+                console.error(`Error parsing data1.json file: ${parseError.message}`);
+            }
+        });
+    });
+}
+
+// Example usage of the displayMessages function
+displayMessages();
